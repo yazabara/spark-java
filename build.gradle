@@ -32,6 +32,19 @@ repositories {
 dependencies {
     compile('org.springframework.boot:spring-boot-starter')
     compile('org.projectlombok:lombok')
+    compile('org.hibernate:hibernate-validator:5.2.4.Final')
+
+    // https://mvnrepository.com/artifact/org.apache.spark/spark-core
+    compile("org.apache.spark:spark-core_2.11:2.3.0") {
+        exclude group: 'org.slf4j'
+    }
+
+    // https://mvnrepository.com/artifact/org.apache.spark/spark-sql
+    compile("org.apache.spark:spark-sql_2.11:2.3.0") {
+        exclude group: 'org.slf4j'
+    }
+
+
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

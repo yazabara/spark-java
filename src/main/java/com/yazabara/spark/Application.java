@@ -24,6 +24,6 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        LOGGER.info("S3 configuration: {}", hadoopService.s3Config);
+
     }
 }
