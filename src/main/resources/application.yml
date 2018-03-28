@@ -1,0 +1,11 @@
+logging:
+  level:
+    odh.tool: DEBUG
+    org.springframework: INFO
+  file: spark-hadoop/app.log
+
+s3-conf:
+  key: key-conf
+  secret: secret-conf
+  bucket: bucket-conf
+  endpoint: endpoint-conf
