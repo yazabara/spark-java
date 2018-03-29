@@ -4,6 +4,10 @@ logging:
     org.springframework: INFO
   file: spark-hadoop/app.log
 
+hdfs:
+  host: localhost
+  port: 9000
+
 s3-conf:
   key: key-conf
   secret: secret-conf
