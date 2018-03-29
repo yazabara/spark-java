@@ -3,6 +3,7 @@ package com.yazabara.spark.services;
 import com.yazabara.spark.config.HdfsConfig;
 import com.yazabara.spark.config.S3Config;
 import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.api.java.function.MapFunction;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
@@ -18,13 +19,11 @@ public class HadoopService {
 
     private final S3Config s3Config;
     private final HdfsConfig hdfsConfig;
-    private final SparkActions sparkActions;
     private JavaSparkContext sparkContext;
 
-    public HadoopService(S3Config s3Config, HdfsConfig hdfsConfig, SparkActions sparkActions, SparkContextBuilder sparkContextBuilder) {
+    public HadoopService(S3Config s3Config, HdfsConfig hdfsConfig, SparkContextBuilder sparkContextBuilder) {
         this.s3Config = s3Config;
         this.hdfsConfig = hdfsConfig;
-        this.sparkActions = sparkActions;
         this.sparkContext = sparkContextBuilder.createJavaSparkContext();
         LOGGER.info("Configuration: S3: {}, HDFS: {}", s3Config, hdfsConfig);
     }
@@ -42,7 +41,7 @@ public class HadoopService {
         json.write().csv(hdfsConfig.getPath() + "output.csv");
 
         json
-                .map(SparkActions.convertToString(), Encoders.STRING())
+                .map((MapFunction<Row, String>) value -> value.getAs("name"), Encoders.STRING())
                 .show();
     }
 
