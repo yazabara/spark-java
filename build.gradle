@@ -30,21 +30,20 @@ repositories {
 
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter')
+    compile('org.springframework.boot:spring-boot-starter'){
+//        exclude module: 'log4j-slf4j-impl'
+        exclude module: 'logback-classic'
+    }
     compile('org.projectlombok:lombok')
     compile('org.hibernate:hibernate-validator:5.2.4.Final')
 
-    // https://mvnrepository.com/artifact/org.apache.spark/spark-core
-    compile("org.apache.spark:spark-core_2.11:2.3.0") {
-        exclude group: 'org.slf4j'
-    }
+    compile("org.apache.spark:spark-core_2.11:2.3.0")
 
-    // https://mvnrepository.com/artifact/org.apache.spark/spark-sql
-    compile("org.apache.spark:spark-sql_2.11:2.3.0") {
-        exclude group: 'org.slf4j'
-    }
+    compile("org.apache.spark:spark-sql_2.11:2.3.0")
 
-
+    compile("org.apache.hadoop:hadoop-aws:2.7.3")
+    compile("org.apache.hadoop:hadoop-common:2.7.3")
+    compile("org.apache.hadoop:hadoop-hdfs:2.7.3")
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
