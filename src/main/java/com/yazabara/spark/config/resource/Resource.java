@@ -2,9 +2,7 @@ package com.yazabara.spark.config.resource;
 
 import java.util.Map;
 
-public interface ResourceConfig {
-
-    String getFilePath();
+public interface Resource {
 
     String getSchema();
 

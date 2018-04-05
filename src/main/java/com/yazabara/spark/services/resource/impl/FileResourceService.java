@@ -1,7 +1,8 @@
 package com.yazabara.spark.services.resource.impl;
 
-import com.yazabara.spark.config.resource.ResourceConfig;
-import com.yazabara.spark.config.resource.impl.FileConfig;
+import com.yazabara.spark.config.WithResources;
+import com.yazabara.spark.config.resource.Resource;
+import com.yazabara.spark.config.impl.FileConfig;
 import com.yazabara.spark.services.resource.AbstractResourceService;
 import com.yazabara.spark.services.resource.ResourceService;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class FileResourceService extends AbstractResourceService implements Reso
     }
 
     @Override
-    protected ResourceConfig getConfig() {
+    protected WithResources getConfig() {
         return config;
     }
 }

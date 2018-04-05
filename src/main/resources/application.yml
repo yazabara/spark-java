@@ -1,24 +1,26 @@
 hdfs:
   host: localhost
   port: 9000
-  path: output.csv
-  schema: id INT, name STRING
-  options:
-    header: true
+  resource:
+    path: output.csv
+    schema: id INT, name STRING
+    options:
+      header: true
 
 s3-conf:
   key: key-conf
   secret: secret-conf
   bucket: bucket-conf
   endpoint: endpoint-conf
-  path: yazabara/input.csv
-  schema: id INT, name STRING
-  options:
-    header: true
-    header1: true1
+  resource:
+    path: yazabara/input.csv
+    schema: id INT, name STRING
+    options:
+      header: true
 
 file:
-  path: src/main/resources/spark-resources/input.csv
-  schema: id INT, name STRING
-  options:
-    header: true
+  resource:
+    path: src/main/resources/spark-resources/input.csv
+    schema: id INT, name STRING
+    options:
+      header: true

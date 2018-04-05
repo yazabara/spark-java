@@ -1,6 +1,6 @@
 package com.yazabara.spark.services;
 
-import com.yazabara.spark.config.resource.impl.S3Config;
+import com.yazabara.spark.config.impl.S3Config;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.springframework.stereotype.Service;

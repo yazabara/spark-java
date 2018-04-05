@@ -1,6 +1,7 @@
-package com.yazabara.spark.config.resource.impl;
+package com.yazabara.spark.config.impl;
 
-import com.yazabara.spark.config.resource.ResourceConfig;
+import com.yazabara.spark.config.WithResources;
+import com.yazabara.spark.config.resource.impl.ResourceConfig;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -8,14 +9,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Map;
-
 @Configuration
 @ConfigurationProperties("hdfs")
 @Setter
 @Getter
 @ToString
-public class HdfsConfig implements ResourceConfig {
+public class HdfsConfig implements WithResources {
 
     private String host = "localhost";
 
@@ -23,12 +22,10 @@ public class HdfsConfig implements ResourceConfig {
 
     private String path;
 
-    private String schema;
-
-    private Map<String, String> options;
+    private ResourceConfig resource;
 
     @Override
-    public String getFilePath() {
-        return StringUtils.join("hdfs://", host, ":", port, "/", path);
+    public String getResourcePath() {
+        return StringUtils.join("hdfs://", host, ":", port, "/", resource.getPath());
     }
 }

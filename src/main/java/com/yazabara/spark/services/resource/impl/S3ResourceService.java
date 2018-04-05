@@ -1,7 +1,7 @@
 package com.yazabara.spark.services.resource.impl;
 
-import com.yazabara.spark.config.resource.ResourceConfig;
-import com.yazabara.spark.config.resource.impl.S3Config;
+import com.yazabara.spark.config.WithResources;
+import com.yazabara.spark.config.impl.S3Config;
 import com.yazabara.spark.services.resource.AbstractResourceService;
 import com.yazabara.spark.services.resource.ResourceService;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class S3ResourceService extends AbstractResourceService implements Resour
     }
 
     @Override
-    protected ResourceConfig getConfig() {
+    protected WithResources getConfig() {
         return config;
     }
 }

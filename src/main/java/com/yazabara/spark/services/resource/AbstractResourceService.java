@@ -1,6 +1,6 @@
 package com.yazabara.spark.services.resource;
 
-import com.yazabara.spark.config.resource.ResourceConfig;
+import com.yazabara.spark.config.WithResources;
 import org.apache.spark.sql.DataFrameReader;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
@@ -13,17 +13,17 @@ public abstract class AbstractResourceService implements ResourceService {
         //create base reader
         DataFrameReader reader = getSparkSession()
                 .read()
-                .schema(getConfig().getSchema());
+                .schema(getConfig().getResource().getSchema());
 
         //fill all options
-        getConfig().getOptions().forEach(reader::option);
+        getConfig().getResource().getOptions().forEach(reader::option);
 
         //read target file from resource source
         return reader
-                .csv(getConfig().getFilePath());
+                .csv(getConfig().getResourcePath());
     }
 
-    protected abstract ResourceConfig getConfig();
+    protected abstract WithResources getConfig();
 
     protected SparkSession getSparkSession() {
         return SparkSession.builder().getOrCreate();
