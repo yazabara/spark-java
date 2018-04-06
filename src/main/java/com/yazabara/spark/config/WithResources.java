@@ -4,7 +4,7 @@ import com.yazabara.spark.config.resource.Resource;
 
 public interface WithResources {
 
-    Resource getResource();
+    Resource getResource(String name);
 
-    String getResourcePath();
+    String getResourcePath(String name);
 }

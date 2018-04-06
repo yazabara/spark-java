@@ -9,18 +9,18 @@ import org.apache.spark.sql.SparkSession;
 public abstract class AbstractResourceService implements ResourceService {
 
     @Override
-    public Dataset<Row> load() {
+    public Dataset<Row> load(String name) {
         //create base reader
         DataFrameReader reader = getSparkSession()
                 .read()
-                .schema(getConfig().getResource().getSchema());
+                .schema(getConfig().getResource(name).getSchema());
 
         //fill all options
-        getConfig().getResource().getOptions().forEach(reader::option);
+        getConfig().getResource(name).getOptions().forEach(reader::option);
 
         //read target file from resource source
         return reader
-                .csv(getConfig().getResourcePath());
+                .csv(getConfig().getResourcePath(name));
     }
 
     protected abstract WithResources getConfig();

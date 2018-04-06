@@ -15,16 +15,15 @@ public class HadoopService {
     private final ResourceService resourceService;
     private JavaSparkContext sparkContext;
 
-    public HadoopService(@Qualifier("S3Resources") ResourceService resourceService, SparkContextBuilder sparkContextBuilder) {
+    public HadoopService(@Qualifier("FileResources") ResourceService resourceService, SparkContextBuilder sparkContextBuilder) {
         this.resourceService = resourceService;
         this.sparkContext = sparkContextBuilder.createJavaSparkContext();
     }
 
-
     public void calculate() {
         LOGGER.info("Calculating started.");
         resourceService
-                .load()
+                .load("test")
                 .show();
         LOGGER.info("Calculating finished.");
     }

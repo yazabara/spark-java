@@ -6,5 +6,5 @@ import org.apache.spark.sql.Row;
 
 public interface ResourceService {
 
-    Dataset<Row> load();
+    Dataset<Row> load(String name);
 }
