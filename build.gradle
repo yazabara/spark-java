@@ -3,6 +3,7 @@ buildscript {
         springBootVersion = '2.0.0.RELEASE'
     }
     repositories {
+        mavenLocal()
         mavenCentral()
     }
     dependencies {
@@ -25,12 +26,13 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter'){
+    compile('org.springframework.boot:spring-boot-starter') {
 //        exclude module: 'log4j-slf4j-impl'
         exclude module: 'logback-classic'
     }
@@ -38,12 +40,13 @@ dependencies {
     compile('org.hibernate:hibernate-validator:5.2.4.Final')
 
     compile("org.apache.spark:spark-core_2.11:2.3.0")
-
     compile("org.apache.spark:spark-sql_2.11:2.3.0")
 
     compile("org.apache.hadoop:hadoop-aws:2.7.3")
     compile("org.apache.hadoop:hadoop-common:2.7.3")
     compile("org.apache.hadoop:hadoop-hdfs:2.7.3")
+
+    compile("com.ibm.db2:db2jcc4:10.5.5")
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

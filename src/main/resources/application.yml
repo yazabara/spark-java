@@ -1,3 +1,15 @@
+db:
+  options:
+    url: db-url
+    driver: db-driver
+    fetchsize: db-fetchsize
+    batchsize: db-batchsize
+    user: db-user
+    password: db-password
+  resources:
+    test:
+      path: ( SELECT ID, NAME FROM SPARK_YZ.TEST_YZ ) data
+
 hdfs:
   host: localhost
   port: 9000

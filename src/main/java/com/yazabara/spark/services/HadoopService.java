@@ -15,7 +15,7 @@ public class HadoopService {
     private final ResourceService resourceService;
     private JavaSparkContext sparkContext;
 
-    public HadoopService(@Qualifier("FileResources") ResourceService resourceService, SparkContextBuilder sparkContextBuilder) {
+    public HadoopService(@Qualifier("DbResources") ResourceService resourceService, SparkContextBuilder sparkContextBuilder) {
         this.resourceService = resourceService;
         this.sparkContext = sparkContextBuilder.createJavaSparkContext();
     }
